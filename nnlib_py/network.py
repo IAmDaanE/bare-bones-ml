@@ -131,11 +131,11 @@ class WeightInitializers:
 
     @staticmethod
     def ones(n_in, n_out):
-        return np.ones(n_in, n_out)
+        return np.ones((n_in, n_out))
 
     @staticmethod
     def zeros(n_in, n_out):
-        return np.zeros(n_in, n_out)
+        return np.zeros((n_in, n_out))
 
 class PreTrainedLayer:
     def __init__(self, weights_location, biases_location, activation):
