@@ -162,6 +162,7 @@ class Layer:
         activation_grad_func = Activations.gradient_map[self.activation]
         activation_gradient = activation_grad_func(self.pre_activation)
         gradient_after_activation = incoming_gradient * activation_gradient
+        print(f"cached inputs shape: {self.cached_inputs.shape}, gradient after actionation shape: {gradient_after_activation.shape} incoming gradient shape {incoming_gradient.shape}")
         self.weight_gradient = self.cached_inputs.T @ gradient_after_activation
         self.bias_gradient = np.sum(gradient_after_activation, axis=0, keepdims=True)
         return gradient_after_activation @ self.weights.T
