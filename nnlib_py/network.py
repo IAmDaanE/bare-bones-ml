@@ -129,6 +129,14 @@ class WeightInitializers:
     def random_small(n_in, n_out): # algemeen
         return np.random.randn(n_in, n_out) * 0.01
 
+    @staticmethod
+    def ones(n_in, n_out):
+        return np.ones(n_in, n_out)
+
+    @staticmethod
+    def zeros(n_in, n_out):
+        return np.zeros(n_in, n_out)
+
 class PreTrainedLayer:
     def __init__(self, weights_location, biases_location, activation):
         self.weights = np.load(weights_location)
