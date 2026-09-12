@@ -41,7 +41,8 @@ class Activations:
     gradient_map = {
         relu.__func__: relu_grad.__func__,
         linear.__func__: linear_grad.__func__,
-        sigmoid.__func__: sigmoid_grad.__func__
+        sigmoid.__func__: sigmoid_grad.__func__,
+        tanh.__func__: tanh_grad.__func__
     }
 
 class Losses:
