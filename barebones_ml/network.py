@@ -1,6 +1,7 @@
 import numpy as np
 import pygame
 from .losses import Losses
+from .activations import Activations
 
 class Network:
     def __init__(self, loss_function):
