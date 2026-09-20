@@ -1,4 +1,5 @@
 import numpy as np
+from .activations import Activations
 
 class Layer:
     def __init__(self, n_in, n_out, activation, initializer):
