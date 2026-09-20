@@ -17,10 +17,10 @@ It contains Loss functions, Activation functions, Learning Rate decay functions 
 
 ### Getting the Source
 
-This project is [hosted on GitHub](https://github.com/IAmDaanE/neural-network-library). You can download the zip or clone this project directly using this command:
+This project is [hosted on GitHub](https://github.com/IAmDaanE/bare-bones-ml). You can download the zip or clone this project directly using this command:
 
 ```
-git clone git@github.com:IAmDaanE/neural-network-library.git
+git clone git@github.com:IAmDaanE/bare-bones-ml.git
 ```
 
 ### Installation and Use
@@ -28,11 +28,11 @@ git clone git@github.com:IAmDaanE/neural-network-library.git
 **Requirements**: You must have Python 3.9 - 3.13.
 1. Run this command (preferably using a virtual environment):
     ```powershell
-    pip install git+https://github.com/IAmDaanE/neural-network-library.git@master
+    pip install git+https://github.com/IAmDaanE/bare-bones-ml.git@master
     ```
 2. In the python file where you want to run it use:
     ```python
-    import nnlib_py as nn
+    import barebones_ml as bbml
     ```
 
 ## License

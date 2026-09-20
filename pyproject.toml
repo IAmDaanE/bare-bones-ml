@@ -3,6 +3,6 @@ requires = ["setuptools>=61.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "nnlib_py"
+name = "barebones_ml"
 version = "1.2.1"
 dependencies = ["pygame", "numpy"]
