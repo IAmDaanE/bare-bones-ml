@@ -1,6 +1,6 @@
 import numpy as np
 
-class LrDecays:
+class LRDecays:
     @staticmethod
     def exponential_decay(current_lr, factor):
         return factor * current_lr
