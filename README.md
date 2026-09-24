@@ -38,9 +38,13 @@ Doing a forward pass
 ```python
 outputs = network.forward(inputs)
 ```
+Calculating loss
+```python
+loss = network.loss_function(outputs, target_outputs)
+```
 Doing a backward pass
 ```Python
-network.backward(network.loss)
+network.backward(loss)
 ```
 
 ## License
