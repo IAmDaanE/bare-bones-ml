@@ -1,6 +1,6 @@
 # Custom Neural Network and Machine Learning Library
 
-My own homemade neural network and machine learning library written in python using just NumPy.
+My own homemade barebones_ml neural network and machine learning library written in python using just NumPy.
 
 ---
 
