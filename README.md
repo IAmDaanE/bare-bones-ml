@@ -16,7 +16,7 @@ It contains Loss functions, Activation functions, Learning Rate decay functions 
 
 ### Installation
 
-**Requires:**: Python 3.9 - 3.13  
+**Requires:** Python 3.9 - 3.13  
 Run this command (preferably using a virtual environment):
 
 ```
