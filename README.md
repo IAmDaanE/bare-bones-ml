@@ -1,6 +1,6 @@
 # Custom Neural Network and Machine Learning Library
 
-My own homemade neural network library written in python using just NumPy.
+My own homemade neural network and machine learning library written in python using just NumPy.
 
 ---
 
@@ -14,25 +14,34 @@ It contains Loss functions, Activation functions, Learning Rate decay functions 
 
 ## Getting Started
 
-### Getting the Source
+### Installation
 
-This project is [hosted on GitHub](https://github.com/IAmDaanE/bare-bones-ml). You can download the zip or clone this project directly using this command:
+**Requires:**: Python 3.9 - 3.13  
+Run this command (preferably using a virtual environment):
 
 ```
-git clone git@github.com:IAmDaanE/bare-bones-ml.git
+pip install git+https://github.com/IAmDaanE/bare-bones-ml.git@master
 ```
 
-### Installation and Use
+### Usage
 
-**Requirements**: You must have Python 3.9 - 3.13.
-1. Run this command (preferably using a virtual environment):
-    ```powershell
-    pip install git+https://github.com/IAmDaanE/bare-bones-ml.git@master
-    ```
-2. In the python file where you want to run it use:
-    ```python
-    import barebones_ml as bbml
-    ```
+Importing
+```python
+import barebones_ml as bbml
+```
+Creating a neural network
+```python
+network = bbml.Network(bbml.losses.mse)
+network.add(bbml.Layer(1, 16, bbml.Activations.ReLu))
+```
+Doing a forward pass
+```python
+outputs = network.forward(inputs)
+```
+Doing a backward pass
+```Python
+network.backward(network.loss)
+```
 
 ## License
 
