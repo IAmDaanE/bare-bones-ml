@@ -20,3 +20,11 @@ class WeightInitializers:
     @staticmethod
     def zeros(n_in, n_out):
         return np.zeros((n_in, n_out))
+
+    string_map = {
+        "he": he.__func__,
+        "xavier": xavier.__func__,
+        "random_small": random_small.__func__,
+        "ones": ones.__func__,
+        "zeros": zeros.__func__
+    }

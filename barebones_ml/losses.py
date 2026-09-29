@@ -42,3 +42,9 @@ class Losses:
         mse.__func__: mse_grad.__func__,
         cross_entropy.__func__: cross_entropy_grad.__func__
     }
+
+    string_map = {
+        "softmax_cross_entropy": softmax_cross_entropy.__func__,
+        "mse": mse.__func__,
+        "cross_entropy": cross_entropy.__func__
+    }

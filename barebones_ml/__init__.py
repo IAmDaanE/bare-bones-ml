@@ -5,3 +5,4 @@ from .weight_initializers import WeightInitializers
 from .losses import Losses
 from .activations import Activations
 from .lr_decays import LRDecays
+from .visualization import Visualization

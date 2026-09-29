@@ -1,11 +1,15 @@
 import numpy as np
 from .activations import Activations
+from .weight_initializers import WeightInitializers
 
 class Layer:
-    def __init__(self, n_in, n_out, activation, initializer):
+    def __init__(self, n_in, n_out, activation_string, initializer_string):
+        initializer = WeightInitializers.string_map[initializer_string]
         self.weights = initializer(n_in, n_out)
         self.biases = np.zeros((1, n_out))
-        self.activation = activation
+        self.activation = Activations.string_map[activation_string]
+        self.n_in = n_in
+        self.n_out = n_out
 
     def forward(self, inputs):
         self.cached_inputs = inputs
