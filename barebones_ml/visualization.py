@@ -21,7 +21,7 @@ class Visualization:
         hidden_size = network_class.layers[1].n_in
         output_size = network_class.layers[-1].n_out
         biggest_node_amount = max(input_size, hidden_size, output_size)
-        hor_gap = (window_width - 2 * hor_side_offset) / (hidden_amount + 1)
+        hor_gap = (window_width - 2 * hor_padding) / (hidden_amount + 1)
         if method == "proportional":
             input_node_gap = (window_height - 2 * vert_padding) / (biggest_node_amount + 1)
             hidden_node_gap = input_node_gap
