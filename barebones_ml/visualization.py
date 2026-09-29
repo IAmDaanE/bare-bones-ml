@@ -17,9 +17,9 @@ class Visualization:
         window_width = screen.get_width()
         window_height = screen.get_height()
         hidden_amount = len(network_class.layers) - 2
-        input_size = len(network_class.layers[0].n_in)
-        hidden_size = len(network_class.layers[1].n_in)
-        output_size = len(network_class.layers[-1].n_out)
+        input_size = network_class.layers[0].n_in
+        hidden_size = network_class.layers[1].n_in
+        output_size = lennetwork_class.layers[-1].n_out
         biggest_node_amount = max(input_size, hidden_size, output_size)
         if method == "proportional":
             input_node_gap = (window_height - 2 * vert_padding) / (biggest_node_amount + 1)
