@@ -48,7 +48,7 @@ class Visualization:
                 for i in range(input_size):
                     start_y = (window_height / 2) - (input_node_gap * ((input_size - 1) / 2)) + (i * input_node_gap)
                     for p in range(hidden_size):
-                        weight = layers[q].weights[i, p]
+                        weight = network_class.layers[q].weights[i, p]
                         if weight > 0:
                             color = (255, 255, 255)
                         else:
