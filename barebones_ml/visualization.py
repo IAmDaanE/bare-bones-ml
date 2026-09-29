@@ -32,14 +32,14 @@ class Visualization:
         node_radius = 8
         for i in range(input_size):
             y = (window_height / 2) - (input_node_gap * ((input_size - 1) / 2)) + (i * input_node_gap)
-            pygame.draw.circle(self.screen, (255,255,255), (hor_padding, y), node_radius, 3)
+            pygame.draw.circle(screen, (255,255,255), (hor_padding, y), node_radius, 3)
         for q in range(hidden_amount):
             for i in range(hidden_size):
                 y = (window_height / 2) - (hidden_node_gap * ((hidden_size - 1) / 2)) + (i * hidden_node_gap)
-                pygame.draw.circle(self.screen, (255,255,255), (hor_padding + hor_gap * (q + 1), y), node_radius, 3)
+                pygame.draw.circle(screen, (255,255,255), (hor_padding + hor_gap * (q + 1), y), node_radius, 3)
         for i in range(output_size):
             y = (window_height / 2) - (output_node_gap * ((output_size - 1) / 2)) + (i * output_node_gap)
-            pygame.draw.circle(self.screen, (255,255,255), (hor_padding + (hidden_amount + 1) * hor_gap, y), node_radius, 3)
+            pygame.draw.circle(screen, (255,255,255), (hor_padding + (hidden_amount + 1) * hor_gap, y), node_radius, 3)
         for q in range(hidden_amount):
             if q == 0:
                 start_x = hor_padding
@@ -47,38 +47,38 @@ class Visualization:
                 for i in range(input_size):
                     start_y = (window_height / 2) - (input_node_gap * ((input_size - 1) / 2)) + (i * input_node_gap)
                     for p in range(hidden_size):
-                        weight = self.layers[q].weights[i, p]
+                        weight = layers[q].weights[i, p]
                         if weight > 0:
                             color = (255, 255, 255)
                         else:
                             color = (0, 134, 212)
                         end_y = (window_height / 2) - (hidden_node_gap * ((hidden_size - 1) / 2)) + (p * hidden_node_gap)
-                        pygame.draw.line(self.screen, color, (start_x, start_y), (end_x, end_y), max(1, int(abs(weight) * 7)))
+                        pygame.draw.line(screen, color, (start_x, start_y), (end_x, end_y), max(1, int(abs(weight) * 7)))
             else:
                 start_x = hor_padding + q * hor_gap
                 end_x = hor_padding + (q + 1) * hor_gap
                 for i in range(hidden_size):
                     start_y = (window_height / 2) - (hidden_node_gap * ((hidden_size - 1) / 2)) + (i * hidden_node_gap)
                     for p in range(hidden_size):
-                        weight = self.layers[q].weights[i, p]
+                        weight = network_class.layers[q].weights[i, p]
                         if weight > 0:
                             color = (255, 255, 255)
                         else:
                             color = (0, 134, 212)
                         end_y = (window_height / 2) - (hidden_node_gap * ((hidden_size - 1) / 2)) + (p * hidden_node_gap)
-                        pygame.draw.line(self.screen, color, (start_x, start_y), (end_x, end_y), max(1, int(abs(weight) * 7)))
+                        pygame.draw.line(screen, color, (start_x, start_y), (end_x, end_y), max(1, int(abs(weight) * 7)))
         for q in range(hidden_size):
             start_x = hor_padding + hor_gap * (hidden_amount)
             end_x = hor_padding + hor_gap * (hidden_amount + 1)
             start_y = (window_height / 2) - (hidden_node_gap * ((hidden_size - 1) / 2)) + (q * hidden_node_gap)
             for p in range(output_size):
-                weight = self.layers[hidden_amount].weights[q, p]
+                weight = network_class.layers[hidden_amount].weights[q, p]
                 if weight > 0:
                     color = (255, 255, 255)
                 else:
                     color = (0, 134, 212)
                 end_y = (window_height / 2) - (output_node_gap * ((output_size - 1) / 2)) + (p * output_node_gap)
-                pygame.draw.line(self.screen, color, (start_x, start_y), (end_x, end_y), max(1, int(abs(weight) * 7)))
+                pygame.draw.line(screen, color, (start_x, start_y), (end_x, end_y), max(1, int(abs(weight) * 7)))
 
     def draw_graph(self, network_class, screen):
         pass
