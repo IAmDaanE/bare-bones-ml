@@ -44,10 +44,10 @@ class Activations:
         tanh.__func__: tanh_grad.__func__}
 
     string_map = {
-        "relu": relu.__func__,
-        "linear": linear.__func__,
-        "sigmoid": sigmoid.__func__,
-        "tanh": tanh.__func__}
+        "relu": relu,
+        "linear": linear,
+        "sigmoid": sigmoid,
+        "tanh": tanh}
 
     reverse_string_map = {
         relu.__func__: "relu",
