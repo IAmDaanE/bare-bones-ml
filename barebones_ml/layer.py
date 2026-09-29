@@ -7,7 +7,7 @@ class Layer:
         initializer = WeightInitializers.string_map[initializer_string]
         self.weights = initializer(n_in, n_out)
         self.biases = np.zeros((1, n_out))
-        self.activation = Activations.string_map[activation_string].__func__
+        self.activation = Activations.string_map[activation_string]
         self.n_in = n_in
         self.n_out = n_out
 
