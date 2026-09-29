@@ -8,6 +8,8 @@ class Layer:
         self.weights = initializer(n_in, n_out)
         self.biases = np.zeros((1, n_out))
         self.activation = Activations.string_map[activation_string]
+        print(self.activation, end="    ")
+        print(activation_string)
         self.n_in = n_in
         self.n_out = n_out
 

@@ -4,5 +4,5 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "barebones_ml"
-version = "2.0.13"
+version = "2.0.14"
 dependencies = ["pygame-ce", "numpy"]
