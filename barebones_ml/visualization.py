@@ -92,9 +92,9 @@ class Visualization:
             screen.blit(loss_text, (6, 100))
 
     def full_draw(self, screen, network_class):
-        network_surface = Pygame.Surface((500, 420))
-        graph_surface = Pygame.Surface((420, 420))
-        info_surface = Pygame.Surface((960, 200))
+        network_surface = pygame.Surface((500, 420))
+        graph_surface = pygame.Surface((420, 420))
+        info_surface = pygame.Surface((960, 200))
         self.draw_network(network_class, network_surface)
         self.draw_graph(network_class, screen)
         draw_bools = {
