@@ -19,7 +19,7 @@ class Visualization:
         hidden_amount = len(network_class.layers) - 2
         input_size = network_class.layers[0].n_in
         hidden_size = network_class.layers[1].n_in
-        output_size = lennetwork_class.layers[-1].n_out
+        output_size = network_class.layers[-1].n_out
         biggest_node_amount = max(input_size, hidden_size, output_size)
         if method == "proportional":
             input_node_gap = (window_height - 2 * vert_padding) / (biggest_node_amount + 1)
