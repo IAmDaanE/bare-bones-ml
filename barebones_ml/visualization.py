@@ -5,13 +5,13 @@ class Visualization:
         padding = 20
         self.network_rect = pygame.Rect(padding, padding, 500, 420)
         self.graph_rect = pygame.Rect(padding * 2 + 500, padding, 420, 420)
-        self.info_rect = pygame.Rect(padding, padding * 2 + 420, 960, 200)
+        self.info_rect = pygame.Rect(padding, padding * 2 + 420, 940, 200)
         self.font = pygame.font.Font("../assets/JetBrainsMono-Regular.ttf", 18)
 
     def draw_ui_shell(self, screen):
-        pygame.draw.rect(screen, (0, 173, 181), self.network_rect)
-        pygame.draw.rect(screen, (0, 173, 181), self.graph_rect)
-        pygame.draw.rect(screen, (0, 173, 181), self.info_rect)
+        pygame.draw.rect(screen, (0, 173, 181), self.network_rect, width=1)
+        pygame.draw.rect(screen, (0, 173, 181), self.graph_rect, width=1)
+        pygame.draw.rect(screen, (0, 173, 181), self.info_rect, width=1)
 
     def draw_network(self, network_class, screen, hor_padding=20, vert_padding=15, method="proportional"):
         window_width = screen.get_width()
@@ -106,7 +106,7 @@ class Visualization:
             "hidden_size": True,
             "model_name": True
         }
-        self.draw_info(network_class, screen, draw_bools)
+        self.draw_info(network_class, info_surface, draw_bools)
         screen.blit(network_surface, (20, 20))
         screen.blit(graph_surface, (540, 20))
         screen.blit(info_surface, (20, 440))
