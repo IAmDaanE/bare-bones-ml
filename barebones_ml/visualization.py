@@ -1,3 +1,5 @@
+import pygame
+
 class Visualization:
     def __init__(self):
         padding = 20
