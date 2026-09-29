@@ -7,7 +7,8 @@ class Layer:
         initializer = WeightInitializers.string_map[initializer_string]
         self.weights = initializer(n_in, n_out)
         self.biases = np.zeros((1, n_out))
-        self.activation = Activations.string_map[activation_string]
+        self.activation_string = activation_string
+        self.activation = Activations.string_map[self.activation_string]
         self.n_in = n_in
         self.n_out = n_out
 
@@ -17,7 +18,7 @@ class Layer:
         return self.activation(self.pre_activation)
 
     def backward(self, incoming_gradient):
-        activation_grad_func = Activations.gradient_map[self.activation]
+        activation_grad_func = Activations.gradient_map[self.activation_string]
         activation_gradient = activation_grad_func(self.pre_activation)
         gradient_after_activation = incoming_gradient * activation_gradient
         self.weight_gradient = self.cached_inputs.T @ gradient_after_activation

@@ -38,10 +38,10 @@ class Activations:
         return 1.0 - t ** 2
 
     gradient_map = {
-        relu.__func__: relu_grad.__func__,
-        linear.__func__: linear_grad.__func__,
-        sigmoid.__func__: sigmoid_grad.__func__,
-        tanh.__func__: tanh_grad.__func__}
+        "relu": relu_grad.__func__,
+        "linear": linear_grad.__func__,
+        "sigmoid": sigmoid_grad.__func__,
+        "tanh": tanh_grad.__func__}
 
     string_map = {
         "relu": relu,
