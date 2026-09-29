@@ -6,14 +6,14 @@ class Visualization:
         self.network_rect = pygame.Rect(padding, padding, 500, 420)
         self.graph_rect = pygame.Rect(padding * 2 + 500, padding, 420, 420)
         self.info_rect = pygame.Rect(padding, padding * 2 + 420, 940, 100)
-        self.font = pygame.font.Font("../assets/JetBrainsMono-Regular.ttf", 18)
+        self.font = pygame.font.Font("../assets/JetBrainsMono-Regular.ttf", 22)
 
     def draw_ui_shell(self, screen):
         pygame.draw.rect(screen, (0, 173, 181), self.network_rect, width=1)
         pygame.draw.rect(screen, (0, 173, 181), self.graph_rect, width=1)
         pygame.draw.rect(screen, (0, 173, 181), self.info_rect, width=1)
 
-    def draw_network(self, network_class, screen, hor_padding=20, vert_padding=15, method="proportional"):
+    def draw_network(self, network_class, screen, hor_padding=30, vert_padding=25, method="proportional"):
         window_width = screen.get_width()
         window_height = screen.get_height()
         hidden_amount = len(network_class.layers) - 1
@@ -87,16 +87,16 @@ class Visualization:
     def draw_info(self, network_class, screen, draw_bools):
         if draw_bools["epoch"]:
             epoch_text = self.font.render(f"epoch: {network_class.epoch}", True, (255, 255, 255))
-            screen.blit(epoch_text, (6, 6))
+            screen.blit(epoch_text, (10, 10))
         if draw_bools["loss"]:
-            loss_text = self.font.render(f"loss: {network_class.loss}", True, (255, 255, 255))
-            screen.blit(loss_text, (6, 50))
+            loss_text = self.font.render(f"loss: {round(network_class.loss, 7)}", True, (255, 255, 255))
+            screen.blit(loss_text, (10, 50))
 
     def full_draw(self, screen, network_class):
         network_surface = pygame.Surface((500, 420))
         graph_surface = pygame.Surface((420, 420))
         info_surface = pygame.Surface((960, 100))
-        self.draw_network(network_class, network_surface)
+        self.draw_network(network_class, network_surface, method="stretched")
         self.draw_graph(network_class, screen)
         draw_bools = {
             "epoch": True,
