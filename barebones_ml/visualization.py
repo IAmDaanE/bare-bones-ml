@@ -93,6 +93,7 @@ class Visualization:
             screen.blit(loss_text, (10, 50))
 
     def full_draw(self, screen, network_class):
+        screen.fill((30, 30, 30))
         network_surface = pygame.Surface((500, 420))
         graph_surface = pygame.Surface((420, 420))
         info_surface = pygame.Surface((960, 100))
