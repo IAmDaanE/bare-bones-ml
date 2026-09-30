@@ -96,9 +96,29 @@ class Visualization:
         screen.fill((30, 30, 30))
         network_surface = pygame.Surface((500, 420))
         graph_surface = pygame.Surface((420, 420))
-        info_surface = pygame.Surface((960, 100))
+        info_surface = pygame.Surface((940, 100))
         self.draw_network(network_class, network_surface, method="stretched")
         self.draw_graph(network_class, screen)
+        draw_bools = {
+            "epoch": True,
+            "loss": True,
+            "learning_rate": True,
+            "amount_layers": True,
+            "hidden_size": True,
+            "model_name": True
+        }
+        self.draw_info(network_class, info_surface, draw_bools)
+        screen.blit(network_surface, (20, 20))
+        screen.blit(graph_surface, (540, 20))
+        screen.blit(info_surface, (20, 460))
+        self.draw_ui_shell(screen)
+
+    def full_draw_no_graph(self, screen, network_class):
+        screen.fill((30, 30, 30))
+        network_surface = pygame.Surface((500, 420))
+        graph_surface = pygame.Surface((420, 420))
+        info_surface = pygame.Surface((940, 100))
+        self.draw_network(network_class, network_surface, method="stretched")
         draw_bools = {
             "epoch": True,
             "loss": True,
