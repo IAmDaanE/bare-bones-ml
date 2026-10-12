@@ -3,7 +3,7 @@
 My own homemade barebones_ml neural network and machine learning library written in python using just NumPy.
 
 I used this library in some projects:
-- [an ai image approximation algorithm](https://github.com/IAmDaanE/ai-image-approximation
+- [an ai image approximation algorithm](https://github.com/IAmDaanE/ai-image-approximation)
 - [an ai function approximation algorithm](https://github.com/IAmDaanE/ai-function-approximation)
 - [an ai mnist digit recognition model](https://github.com/IAmDaanE/ai-digit-recognition)
 
