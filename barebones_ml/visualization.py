@@ -86,6 +86,7 @@ class Visualization:
                 pygame.draw.line(screen, color, (start_x, start_y), (end_x, end_y), max(1, int(abs(weight) * 7)))
 
     def draw_graph(self, network_class, screen, draw_lr=True, display_legend=False):
+        graph_surface = screen
         if self.plotter == None:
             if draw_lr:
                 self.plotter = pgplot.Plotter(["line, line"], display_legend=display_legend, plot_labels_list=["loss", "learning rate"], display_axes=False, custom_colours=True, plot_colours_dict={"background": "#000000", 0: "#ff9933", 1: "#0086d4"})
@@ -104,8 +105,7 @@ class Visualization:
                 self.lr_history
             ]
         ]
-        print(nested_input_array)
-        self.plotter.plot(screen, nested_input_array)
+        self.plotter.plot(graph_surface, nested_input_array)
 
     def draw_info(self, network_class, screen, draw_bools):
         if draw_bools["epoch"]:
