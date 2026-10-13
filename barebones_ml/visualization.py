@@ -93,16 +93,18 @@ class Visualization:
                 self.plotter = pgplot.Plotter(["line"], display_legend=display_legend, plot_labels_list=["loss", "learning rate"], display_axes=False, custom_colours=True, plot_colours_dict={"background": "#000000", 0: "#ff9933", 1: "#0086d4"})
         self.loss_history.append(network_class.loss)
         self.lr_history.append(network_class.current_lr)
+        x_values = [x for x in range(len(self.loss_history))]
         nested_input_array = [
             [
-                [x for x in range(len(self.loss_history))],
+                x_values,
                 self.loss_history
             ],
             [
-                [x for x in range(len(self.lr_history))],
+                x_values,
                 self.lr_history
             ]
         ]
+        print(nested_input_array)
         self.plotter.plot(screen, nested_input_array)
 
     def draw_info(self, network_class, screen, draw_bools):
