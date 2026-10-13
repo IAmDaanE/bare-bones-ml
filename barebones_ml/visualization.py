@@ -1,4 +1,5 @@
 import pygame
+import pgplot
 
 class Visualization:
     def __init__(self):
@@ -7,6 +8,9 @@ class Visualization:
         self.graph_rect = pygame.Rect(padding * 2 + 500, padding, 420, 420)
         self.info_rect = pygame.Rect(padding, padding * 2 + 420, 940, 100)
         self.font = pygame.font.Font("../assets/JetBrainsMono-Regular.ttf", 22)
+        self.plotter = None
+        self.loss_history = []
+        self.lr_history = []
 
     def draw_ui_shell(self, screen):
         pygame.draw.rect(screen, (0, 173, 181), self.network_rect, width=1)
@@ -81,8 +85,25 @@ class Visualization:
                 end_y = (window_height / 2) - (output_node_gap * ((output_size - 1) / 2)) + (p * output_node_gap)
                 pygame.draw.line(screen, color, (start_x, start_y), (end_x, end_y), max(1, int(abs(weight) * 7)))
 
-    def draw_graph(self, network_class, screen):
-        pass
+    def draw_graph(self, network_class, screen, draw_lr=True, display_legend=False):
+        if self.plotter == None:
+            if draw_lr:
+                self.plotter = pgplot.Plotter(["line, line"], display_legend=display_legend, plot_labels_list=["loss", "learning rate"], display_axes=False, custom_colours=True, plot_colours_dict={"background": "#000000", 0: "#ff9933", 1: "#0086d4"})
+            else:
+                self.plotter = pgplot.Plotter(["line"], display_legend=display_legend, plot_labels_list=["loss", "learning rate"], display_axes=False, custom_colours=True, plot_colours_dict={"background": "#000000", 0: "#ff9933", 1: "#0086d4"})
+        self.loss_history.append(network_class.loss)
+        self.lr_history.append(network_class.current_lr)
+        nested_input_array = [
+            [
+                [x for x in range(len(self.loss_history))],
+                self.loss_history
+            ],
+            [
+                [x for x in range(len(self.lr_history))],
+                self.lr_history
+            ]
+        ]
+        self.plotter.plot(screen, nested_input_array)
 
     def draw_info(self, network_class, screen, draw_bools):
         if draw_bools["epoch"]:
@@ -92,13 +113,13 @@ class Visualization:
             loss_text = self.font.render(f"loss: {round(network_class.loss, 7)}", True, (255, 255, 255))
             screen.blit(loss_text, (10, 50))
 
-    def full_draw(self, screen, network_class):
+    def full_draw(self, network_class, screen, draw_lr=True, display_legend=False):
         screen.fill((30, 30, 30))
         network_surface = pygame.Surface((500, 420))
         graph_surface = pygame.Surface((420, 420))
         info_surface = pygame.Surface((940, 100))
         self.draw_network(network_class, network_surface, method="stretched")
-        self.draw_graph(network_class, screen)
+        self.draw_graph(network_class, graph_surface, draw_lr=draw_lr, display_legend=display_legend)
         draw_bools = {
             "epoch": True,
             "loss": True,
@@ -113,7 +134,7 @@ class Visualization:
         screen.blit(info_surface, (20, 460))
         self.draw_ui_shell(screen)
 
-    def full_draw_no_graph(self, screen, network_class):
+    def full_draw_no_graph(self, network_class, screen):
         screen.fill((30, 30, 30))
         network_surface = pygame.Surface((500, 420))
         graph_surface = pygame.Surface((420, 420))
