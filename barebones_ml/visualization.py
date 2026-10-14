@@ -89,9 +89,9 @@ class Visualization:
         graph_surface = screen
         if self.plotter == None:
             if draw_lr:
-                self.plotter = pgplot.Plotter(["line, line"], display_legend=display_legend, plot_labels_list=["loss", "learning rate"], display_axes=display_axes, custom_colours=True, plot_colours_dict={"background": "#000000", 0: "#ff9933", 1: "#0086d4"})
+                self.plotter = pgplot.Plotter(["line, line"], display_legend=display_legend, plot_labels_list=["loss", "learning rate"], display_axes=display_axes, custom_colours=True, plot_colours_dict={"background": "#000000", 0: "#ff9933", 1: "#0086d4", "axes": "#ffffff"})
             else:
-                self.plotter = pgplot.Plotter(["line"], display_legend=display_legend, plot_labels_list=["loss", "learning rate"], display_axes=display_axes, custom_colours=True, plot_colours_dict={"background": "#000000", 0: "#ff9933"})
+                self.plotter = pgplot.Plotter(["line"], display_legend=display_legend, plot_labels_list=["loss", "learning rate"], display_axes=display_axes, custom_colours=True, plot_colours_dict={"background": "#000000", 0: "#ff9933", "axes": "#ffffff"})
         self.loss_history.append(network_class.loss)
         self.lr_history.append(network_class.current_lr)
         x_values = [x for x in range(len(self.loss_history))]
