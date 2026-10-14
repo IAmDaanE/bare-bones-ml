@@ -85,13 +85,13 @@ class Visualization:
                 end_y = (window_height / 2) - (output_node_gap * ((output_size - 1) / 2)) + (p * output_node_gap)
                 pygame.draw.line(screen, color, (start_x, start_y), (end_x, end_y), max(1, int(abs(weight) * 7)))
 
-    def draw_graph(self, network_class, screen, draw_lr=True, display_legend=False):
+    def draw_graph(self, network_class, screen, draw_lr=True, display_legend=False, display_axes=False):
         graph_surface = screen
         if self.plotter == None:
             if draw_lr:
-                self.plotter = pgplot.Plotter(["line, line"], display_legend=display_legend, plot_labels_list=["loss", "learning rate"], display_axes=False, custom_colours=True, plot_colours_dict={"background": "#000000", 0: "#ff9933", 1: "#0086d4"})
+                self.plotter = pgplot.Plotter(["line, line"], display_legend=display_legend, plot_labels_list=["loss", "learning rate"], display_axes=display_axes, custom_colours=True, plot_colours_dict={"background": "#000000", 0: "#ff9933", 1: "#0086d4"})
             else:
-                self.plotter = pgplot.Plotter(["line"], display_legend=display_legend, plot_labels_list=["loss", "learning rate"], display_axes=False, custom_colours=True, plot_colours_dict={"background": "#000000", 0: "#ff9933"})
+                self.plotter = pgplot.Plotter(["line"], display_legend=display_legend, plot_labels_list=["loss", "learning rate"], display_axes=display_axes, custom_colours=True, plot_colours_dict={"background": "#000000", 0: "#ff9933"})
         self.loss_history.append(network_class.loss)
         self.lr_history.append(network_class.current_lr)
         x_values = [x for x in range(len(self.loss_history))]
@@ -115,13 +115,13 @@ class Visualization:
             loss_text = self.font.render(f"loss: {round(network_class.loss, 7)}", True, (255, 255, 255))
             screen.blit(loss_text, (10, 50))
 
-    def full_draw(self, network_class, screen, draw_lr=True, display_legend=False):
+    def full_draw(self, network_class, screen, draw_lr=True, display_legend=False, display_axes=False):
         screen.fill((30, 30, 30))
         network_surface = pygame.Surface((500, 420))
         graph_surface = pygame.Surface((420, 420))
         info_surface = pygame.Surface((940, 100))
         self.draw_network(network_class, network_surface, method="stretched")
-        self.draw_graph(network_class, graph_surface, draw_lr=draw_lr, display_legend=display_legend)
+        self.draw_graph(network_class, graph_surface, draw_lr=draw_lr, display_legend=display_legend, display_axes=display_axes)
         draw_bools = {
             "epoch": True,
             "loss": True,
