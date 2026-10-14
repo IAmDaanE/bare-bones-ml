@@ -118,7 +118,7 @@ class Visualization:
     def full_draw(self, network_class, screen, draw_lr=True, display_legend=False, display_axes=False):
         screen.fill((30, 30, 30))
         network_surface = pygame.Surface((500, 420))
-        graph_surface = pygame.Surface((420, 420))
+        graph_surface = pygame.Surface((415, 415))
         info_surface = pygame.Surface((940, 100))
         self.draw_network(network_class, network_surface, method="stretched")
         self.draw_graph(network_class, graph_surface, draw_lr=draw_lr, display_legend=display_legend, display_axes=display_axes)
@@ -132,7 +132,7 @@ class Visualization:
         }
         self.draw_info(network_class, info_surface, draw_bools)
         screen.blit(network_surface, (20, 20))
-        screen.blit(graph_surface, (540, 20))
+        screen.blit(graph_surface, (545, 25))
         screen.blit(info_surface, (20, 460))
         self.draw_ui_shell(screen)
 
