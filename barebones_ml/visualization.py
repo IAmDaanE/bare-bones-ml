@@ -91,20 +91,29 @@ class Visualization:
             if draw_lr:
                 self.plotter = pgplot.Plotter(["line, line"], display_legend=display_legend, plot_labels_list=["loss", "learning rate"], display_axes=display_axes, custom_colours=True, plot_colours_dict={"background": "#000000", 0: "#ff9933", 1: "#0086d4", "axes": "#ffffff"})
             else:
-                self.plotter = pgplot.Plotter(["line"], display_legend=display_legend, plot_labels_list=["loss", "learning rate"], display_axes=display_axes, custom_colours=True, plot_colours_dict={"background": "#000000", 0: "#ff9933", "axes": "#ffffff"})
+                self.plotter = pgplot.Plotter(["line"], display_legend=display_legend, plot_labels_list=["loss"], display_axes=display_axes, custom_colours=True, plot_colours_dict={"background": "#000000", 0: "#ff9933", "axes": "#ffffff"})
         self.loss_history.append(network_class.loss)
         self.lr_history.append(network_class.current_lr)
         x_values = [x for x in range(len(self.loss_history))]
-        nested_input_array = [
-            [
-                x_values,
-                self.loss_history
-            ],
-            [
-                x_values,
-                self.lr_history
+        nested_input_array = []
+        if draw_lr:
+            nested_input_array = [
+                [
+                    x_values,
+                    self.loss_history
+                ],
+                [
+                    x_values,
+                    self.lr_history
+                ]
             ]
-        ]
+        else:
+            nested_input_array = [
+                [
+                    x_values,
+                    self.loss_history
+                ]
+            ]
         self.plotter.plot(graph_surface, nested_input_array)
 
     def draw_info(self, network_class, screen, draw_bools):
