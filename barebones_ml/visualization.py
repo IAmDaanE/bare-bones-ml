@@ -123,7 +123,7 @@ class Visualization:
         self.draw_network(network_class, network_surface, method="stretched")
         pygame.draw.rect(screen, (0, 0, 0), (540, 20, 420, 420))
         self.draw_graph(network_class, graph_surface, draw_lr=draw_lr, display_legend=display_legend, display_axes=display_axes)
-        pygame.draw.rect(screen, (255, 255, 255), (955, 25, 1, 394))
+        pygame.draw.rect(screen, (255, 255, 255), (955, 25, 1, 389))
         draw_bools = {
             "epoch": True,
             "loss": True,
