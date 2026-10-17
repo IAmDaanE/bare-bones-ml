@@ -3,7 +3,7 @@ import pygame
 from .losses import Losses
 
 class Network:
-    def __init__(self, loss_function_string):
+    def __init__(self, loss_function_string, model_name=None):
         self.layers = []
         self.num_layers = 0
         self.input_size = 0
@@ -16,6 +16,7 @@ class Network:
         self.loss = 0 # should be updated in the training loop, just for visualization
         self.current_lr = 0 # should be updated in the training loop, just for visualization
         self.loss_function = Losses.string_map[loss_function_string]
+        self.model_name = model_name
 
     def add(self, layer):
         self.layers.append(layer)

@@ -117,13 +117,26 @@ class Visualization:
         self.plotter.plot(graph_surface, nested_input_array)
 
     def draw_info(self, network_class, screen, draw_bools):
+        hor_jump = 250
         if draw_bools["epoch"]:
             epoch_text = self.font.render(f"epoch: {network_class.epoch}", True, (255, 255, 255))
             screen.blit(epoch_text, (10, 10))
         if draw_bools["loss"]:
             loss_text = self.font.render(f"loss: {round(network_class.loss, 7)}", True, (255, 255, 255))
             screen.blit(loss_text, (10, 50))
-
+        if draw_bools["learning_rate"]:
+            lr_text = self.font.render(f"learning rate: {round(network_class.current_lr, 7)}", True, (255, 255, 255))
+            screen.blit(loss_text, (10 + hor_jump, 10))
+        if draw_bools["amount_layers"]:
+            amount_layers_text = self.font.render(f"amount layers: {len(network_class.layers)}", True, (255, 255, 255))
+            screen.blit(amount_layers_text, (10 + hor_jump, 50))
+        if draw_bools["hidden_size"]:
+            hidden_size_text = self.font.render(f"hidden size: {network_class.layers[0].n_out}", True, (255, 255, 255))
+            screen.blit(hidden_size_text, (10 + hor_jump * 2, 10))        
+        if draw_bools["model_name"]:
+            model_name_text = self.font.render(f"model name: {network_class.model_name}", True, (255, 255, 255))
+            screen.blit(model_name_text, (10 + hor_jump * 2, 50))
+        
     def full_draw(self, network_class, screen, plot_lr=True, display_legend=False, display_axes=False):
         screen.fill((30, 30, 30))
         network_surface = pygame.Surface((500, 420))
@@ -148,20 +161,21 @@ class Visualization:
         screen.blit(info_surface, (20, 460))
         self.draw_ui_shell(screen)
 
-    def full_draw_no_graph(self, network_class, screen):
+    def full_draw_no_graph(self, network_class, screen, draw_bools=None):
         screen.fill((30, 30, 30))
         network_surface = pygame.Surface((500, 420))
         graph_surface = pygame.Surface((420, 420))
         info_surface = pygame.Surface((940, 100))
         self.draw_network(network_class, network_surface, method="stretched")
-        draw_bools = {
-            "epoch": True,
-            "loss": True,
-            "learning_rate": True,
-            "amount_layers": True,
-            "hidden_size": True,
-            "model_name": True
-        }
+        if draw_bools == None:
+            draw_bools = {
+                "epoch": True,
+                "loss": True,
+                "learning_rate": True,
+                "amount_layers": True,
+                "hidden_size": True,
+                "model_name": True
+            }
         self.draw_info(network_class, info_surface, draw_bools)
         screen.blit(network_surface, (20, 20))
         screen.blit(graph_surface, (540, 20))
