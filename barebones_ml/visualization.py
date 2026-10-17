@@ -124,14 +124,14 @@ class Visualization:
             loss_text = self.font.render(f"loss: {round(network_class.loss, 7)}", True, (255, 255, 255))
             screen.blit(loss_text, (10, 50))
 
-    def full_draw(self, network_class, screen, draw_lr=True, display_legend=False, display_axes=False):
+    def full_draw(self, network_class, screen, plot_lr=True, display_legend=False, display_axes=False):
         screen.fill((30, 30, 30))
         network_surface = pygame.Surface((500, 420))
         graph_surface = pygame.Surface((410, 410))
         info_surface = pygame.Surface((940, 100))
         self.draw_network(network_class, network_surface, method="stretched")
         pygame.draw.rect(screen, (0, 0, 0), (540, 20, 420, 420))
-        self.draw_graph(network_class, graph_surface, draw_lr=draw_lr, display_legend=display_legend, display_axes=display_axes)
+        self.draw_graph(network_class, graph_surface, plot_lr=plot_lr, display_legend=display_legend, display_axes=display_axes)
         if display_axes:
             pygame.draw.rect(screen, (255, 255, 255), (955, 25, 1, 389))
         draw_bools = {
