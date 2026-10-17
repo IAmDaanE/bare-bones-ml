@@ -117,7 +117,7 @@ class Visualization:
         self.plotter.plot(graph_surface, nested_input_array)
 
     def draw_info(self, network_class, screen, draw_bools):
-        hor_jump = 250
+        hor_jump = 290
         if draw_bools["epoch"]:
             epoch_text = self.font.render(f"epoch: {network_class.epoch}", True, (255, 255, 255))
             screen.blit(epoch_text, (10, 10))
@@ -133,7 +133,7 @@ class Visualization:
         if draw_bools["hidden_size"]:
             hidden_size_text = self.font.render(f"hidden size: {network_class.layers[0].n_out}", True, (255, 255, 255))
             screen.blit(hidden_size_text, (10 + hor_jump * 2, 10))        
-        if draw_bools["model_name"]:
+        if draw_bools["model_name"] and network_class.model_name != None:
             model_name_text = self.font.render(f"model name: {network_class.model_name}", True, (255, 255, 255))
             screen.blit(model_name_text, (10 + hor_jump * 2, 50))
         
