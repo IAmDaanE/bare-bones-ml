@@ -126,9 +126,9 @@ class Visualization:
             screen.blit(loss_text, (10, 50))
         if draw_bools["learning_rate"]:
             lr_text = self.font.render(f"learning rate: {round(network_class.current_lr, 7)}", True, (255, 255, 255))
-            screen.blit(loss_text, (10 + hor_jump, 10))
+            screen.blit(lr_text, (10 + hor_jump, 10))
         if draw_bools["amount_layers"]:
-            amount_layers_text = self.font.render(f"amount layers: {len(network_class.layers)}", True, (255, 255, 255))
+            amount_layers_text = self.font.render(f"amount layers: {len(network_class.layers) + 1}", True, (255, 255, 255))
             screen.blit(amount_layers_text, (10 + hor_jump, 50))
         if draw_bools["hidden_size"]:
             hidden_size_text = self.font.render(f"hidden size: {network_class.layers[0].n_out}", True, (255, 255, 255))
