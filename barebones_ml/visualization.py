@@ -133,7 +133,7 @@ class Visualization:
         pygame.draw.rect(screen, (0, 0, 0), (540, 20, 420, 420))
         self.draw_graph(network_class, graph_surface, plot_lr=plot_lr, display_legend=display_legend, display_axes=display_axes)
         if display_axes:
-            pygame.draw.rect(screen, (255, 255, 255), (955, 25, 1, 389))
+            pygame.draw.rect(screen, (255, 255, 255), (955, 25, 1, 387))
         draw_bools = {
             "epoch": True,
             "loss": True,
