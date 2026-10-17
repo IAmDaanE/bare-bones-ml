@@ -85,18 +85,18 @@ class Visualization:
                 end_y = (window_height / 2) - (output_node_gap * ((output_size - 1) / 2)) + (p * output_node_gap)
                 pygame.draw.line(screen, color, (start_x, start_y), (end_x, end_y), max(1, int(abs(weight) * 7)))
 
-    def draw_graph(self, network_class, screen, draw_lr=True, display_legend=False, display_axes=False):
+    def draw_graph(self, network_class, screen, plot_lr=True, display_legend=False, display_axes=False):
         graph_surface = screen
         if self.plotter == None:
-            if draw_lr:
-                self.plotter = pgplot.Plotter(["line, line"], display_legend=display_legend, plot_labels_list=["loss", "learning rate"], display_axes=display_axes, custom_colours=True, plot_colours_dict={"background": "#000000", 0: "#ff9933", 1: "#0086d4", "axes": "#ffffff"})
+            if plot_lr:
+                self.plotter = pgplot.Plotter(["line", "line"], display_legend=display_legend, plot_labels_list=["loss", "learning rate"], display_axes=display_axes, custom_colours=True, plot_colours_dict={"background": "#000000", 0: "#ff9933", 1: "#0086d4", "axes": "#ffffff"})
             else:
                 self.plotter = pgplot.Plotter(["line"], display_legend=display_legend, plot_labels_list=["loss"], display_axes=display_axes, custom_colours=True, plot_colours_dict={"background": "#000000", 0: "#ff9933", "axes": "#ffffff"})
         self.loss_history.append(network_class.loss)
         self.lr_history.append(network_class.current_lr)
         x_values = [x for x in range(len(self.loss_history))]
         nested_input_array = []
-        if draw_lr:
+        if plot_lr:
             nested_input_array = [
                 [
                     x_values,
