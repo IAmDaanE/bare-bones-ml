@@ -11,5 +11,5 @@ class PreTrainedLayer:
         if not reverse:
             self.pre_activation = inputs @ self.weights + self.biases
         else:
-            self.pre_activation = (self.inputs - self.biases) @ self.weights
+            self.pre_activation = (inputs - self.biases) @ self.weights
         return self.activation(self.pre_activation)
