@@ -21,10 +21,10 @@ class Network:
     def add(self, layer):
         self.layers.append(layer)
 
-    def forward(self, inputs):
+    def forward(self, inputs, reverse=False):
         output = inputs
         for layer in self.layers:
-            output = layer.forward(output)
+            output = layer.forward(output, reverse=reverse)
         return output
 
     def backward(self, prediction, true_value):

@@ -12,9 +12,12 @@ class Layer:
         self.n_in = n_in
         self.n_out = n_out
 
-    def forward(self, inputs):
+    def forward(self, inputs, reverse=False):
         self.cached_inputs = inputs
-        self.pre_activation = inputs @ self.weights + self.biases
+        if not reverse:
+            self.pre_activation = inputs @ self.weights + self.biases
+        else:
+            self.pre_activation(inputs + self.biases) @ self.weights
         return self.activation(self.pre_activation)
 
     def backward(self, incoming_gradient):
