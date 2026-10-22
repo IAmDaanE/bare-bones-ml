@@ -7,6 +7,9 @@ class PreTrainedLayer:
         self.biases = np.load(biases_location)
         self.activation = Activations.string_map[activation_string]
 
-    def forward(self, inputs):
-        self.pre_activation = inputs @ self.weights + self.biases
+    def forward(self, inputs, reverse=False):
+        if not reverse:
+            self.pre_activation = inputs @ self.weights + self.biases
+        else:
+            self.pre_activation = (self.inputs - self.biases) @ self.weights
         return self.activation(self.pre_activation)
