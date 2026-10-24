@@ -9,7 +9,7 @@ I used this library in some of my projects:
 
 ---
 
-<img width="1199" height="774" alt="image" src="https://github.com/user-attachments/assets/35d24991-2286-46e1-a87f-78278507bdae" />
+<img width="1464" height="912" alt="Schermafbeelding 2026-10-17 174931" src="https://github.com/user-attachments/assets/355bf6c8-ea1a-4e07-8663-2cb40fa82d6f" />
 
 *the visualization window*
 
