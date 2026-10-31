@@ -2,7 +2,13 @@
 requires = ["setuptools>=61.0"]
 build-backend = "setuptools.build_meta"
 
+[tool.setuptools.packages.find]
+where = ["."]
+
+[tool.setuptools.package-data]
+"skyline.assets.fonts" = ["*.ttf", "*.otf"]
+
 [project]
 name = "barebones_ml"
-version = "2.3.3"
+version = "2.3.4"
 dependencies = ["pygame-ce", "numpy"]

@@ -1,13 +1,15 @@
 import pygame
 import pgplot
+from importlib import resources
+import io
 
 class Visualization:
     def __init__(self):
         padding = 20
         self.network_rect = pygame.Rect(padding, padding, 500, 420)
         self.graph_rect = pygame.Rect(padding * 2 + 500, padding, 420, 420)
+        self.font = pygame.font.Font(io.BytesIO(resources.files("barebones_ml").joinpath(f"assets/JetBrainsMono-Regular.ttf").read_bytes()), 22)
         self.info_rect = pygame.Rect(padding, padding * 2 + 420, 940, 100)
-        self.font = pygame.font.Font("../assets/JetBrainsMono-Regular.ttf", 22)
         self.plotter = None
         self.loss_history = []
         self.lr_history = []
