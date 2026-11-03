@@ -36,17 +36,8 @@ class Visualization:
             input_node_gap = (window_height - 2 * vert_padding) / (input_size + 1)
             hidden_node_gap = (window_height - 2 * vert_padding) / (hidden_size + 1)
             output_node_gap = (window_height - 2 * vert_padding) / (output_size + 1)
-        node_radius = 8
-        for i in range(input_size):
-            y = (window_height / 2) - (input_node_gap * ((input_size - 1) / 2)) + (i * input_node_gap)
-            pygame.draw.circle(screen, (255,255,255), (hor_padding, y), node_radius, 3)
-        for q in range(hidden_amount):
-            for i in range(hidden_size):
-                y = (window_height / 2) - (hidden_node_gap * ((hidden_size - 1) / 2)) + (i * hidden_node_gap)
-                pygame.draw.circle(screen, (255,255,255), (hor_padding + hor_gap * (q + 1), y), node_radius, 3)
-        for i in range(output_size):
-            y = (window_height / 2) - (output_node_gap * ((output_size - 1) / 2)) + (i * output_node_gap)
-            pygame.draw.circle(screen, (255,255,255), (hor_padding + (hidden_amount + 1) * hor_gap, y), node_radius, 3)
+        else:
+            raise ValueError("This method does not exist, choose either proportional or stretched")
         for q in range(hidden_amount):
             if q == 0:
                 start_x = hor_padding
@@ -86,6 +77,17 @@ class Visualization:
                     color = (0, 134, 212)
                 end_y = (window_height / 2) - (output_node_gap * ((output_size - 1) / 2)) + (p * output_node_gap)
                 pygame.draw.line(screen, color, (start_x, start_y), (end_x, end_y), max(1, int(abs(weight) * 7)))
+        node_radius = 8
+        for i in range(input_size):
+            y = (window_height / 2) - (input_node_gap * ((input_size - 1) / 2)) + (i * input_node_gap)
+            pygame.draw.circle(screen, (255,255,255), (hor_padding, y), node_radius, 3)
+        for q in range(hidden_amount):
+            for i in range(hidden_size):
+                y = (window_height / 2) - (hidden_node_gap * ((hidden_size - 1) / 2)) + (i * hidden_node_gap)
+                pygame.draw.circle(screen, (255,255,255), (hor_padding + hor_gap * (q + 1), y), node_radius, 3)
+        for i in range(output_size):
+            y = (window_height / 2) - (output_node_gap * ((output_size - 1) / 2)) + (i * output_node_gap)
+            pygame.draw.circle(screen, (255,255,255), (hor_padding + (hidden_amount + 1) * hor_gap, y), node_radius, 3)
 
     def draw_graph(self, network_class, screen, plot_lr=True, display_legend=False, display_axes=False):
         graph_surface = screen

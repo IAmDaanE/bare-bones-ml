@@ -10,5 +10,5 @@ where = ["."]
 
 [project]
 name = "barebones_ml"
-version = "2.3.5"
+version = "2.3.6"
 dependencies = ["pygame-ce", "numpy"]
