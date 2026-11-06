@@ -1,5 +1,7 @@
 import numpy as np
 import pygame
+import json
+
 from .losses import Losses
 
 class Network:
@@ -36,3 +38,14 @@ class Network:
     def update(self, learning_rate):
         for layer in self.layers:
             layer.update(learning_rate)
+
+    def save(self, model_path):
+        amount_layers = len(self.layers)
+        activations = []
+        for layer in self.layers:
+            activations.append(layer.activation_string)
+        with open(model_path / "model.json", "w") as f:
+            json.dump({"amount_layers": amount_layers, "activations": activations}, f)
+        for i, layer in enumerate(self.layers):
+            np.save(model_path / f"layer_{i}_weights.npy", layer.weights)
+            np.save(model_path / f"layer_{i}_biases.npy", layer.biases)
