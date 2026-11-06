@@ -6,3 +6,4 @@ from .losses import Losses
 from .activations import Activations
 from .lr_decays import LRDecays
 from .visualization import Visualization
+from .pretrained_network import PreTrainedNetwork
