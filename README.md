@@ -15,7 +15,7 @@ I used this library in some of my projects:
 
 ## About the Project
 
-It contains Loss functions, Activation functions, Learning Rate decay functions and multiple ways to initialize weights when creating the network. It also has a nice visualization function made with pygame where you can see the neural network and its weights changing as training progresses.
+It contains Loss functions, Activation functions, Learning Rate decay functions and multiple ways to initialize weights randomly when creating the network. It also has a nice visualization function made with pygame where you can see the neural network and its weights changing as training progresses.
 
 ## Getting Started
 
